@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Actor>
+
+
+@{
+    ViewData["Title"] = "ActorPage";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Actor Page</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>ProfilePictureUrl</th>
+                <th>Biography</th>
+            </tr>
+        </thead>
+        @foreach(var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.FullName</td>
+                    <td>@item.ProfilePictureUrl</td>
+                    <td>@item.Bio</td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
