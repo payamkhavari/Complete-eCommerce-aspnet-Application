@@ -6,5 +6,8 @@ namespace eTickets.Repositories
     {
         void AddActorsIntoDatabase();
         List<Actor> GetActors();
+        Actor DeleteActor(int id);
+        Actor GetActor(int id);
+        void UpdateActor(Actor actor);
     }
 }

@@ -5,25 +5,45 @@
     ViewData["Title"] = "ActorPage";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Actor Page</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Full Name</th>
-                <th>ProfilePictureUrl</th>
-                <th>Biography</th>
-            </tr>
-        </thead>
-        @foreach(var item in Model)
-        {
-            <tbody>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @Html.Raw(TempData["SuccessMessage"])
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@item.FullName</td>
-                    <td>@item.ProfilePictureUrl</td>
-                    <td>@item.Bio</td>
+                    <th>@Html.DisplayNameFor(model => model.ProfilePictureUrl)</th>
+                    <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Bio)</th>
+                    <th>Actions</th>
                 </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img class="rounded-circle" src="@item.ProfilePictureUrl" alt="@item.FullName" style="max-width : 150px"/>
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Bio)
+                        </td>
+                        <td class="align-middle">
+                            <a asp-action="Edit" asp-controller="Actors" asp-route-id="@item.ActorId" class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Edit</a>
+                            <a asp-action="Details" asp-controller="Actors" asp-route-id="@item.ActorId" class="btn btn-outline-info"><i class="bg-info bi-eye"></i>Detalis</a>
+                            <a asp-action="DeleteActor" asp-controller="Actors" asp-route-id="@item.ActorId" class="btn btn-danger"><i class="bg-info bi-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
-        }
-    </table>
+        </table>
+    </div>
 </div>

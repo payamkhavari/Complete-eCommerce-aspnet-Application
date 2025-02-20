@@ -1,0 +1,41 @@
+﻿@model Actor
+
+<h2>ویرایش بازیگر</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<form asp-action="Edit" asp-controller="Actors" method="post">
+    <input type="hidden" asp-for="ActorId" />
+
+    <div class="mb-3">
+        <label asp-for="ProfilePictureUrl" class="form-label">عکس</label>
+        <input asp-for="ProfilePictureUrl" class="form-control" />
+        <span asp-validation-for="ProfilePictureUrl" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FullName" class="form-label">نام کامل</label>
+        <input asp-for="FullName" type="text" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Bio" class="form-label">بیوگرافی</label>
+        <input asp-for="Bio" class="form-control" />
+        <span asp-validation-for="Bio" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Actor_Movies" class="form-label">بت</label>
+        <input asp-for="Actor_Movies" class="form-control" />
+        <span asp-validation-for="Actor_Movies" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+    <a asp-action="Index" class="btn btn-secondary">لغو</a>
+</form>

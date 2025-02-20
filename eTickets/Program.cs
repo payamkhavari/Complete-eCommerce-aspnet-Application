@@ -1,5 +1,6 @@
 using eTickets.Data;
 using eTickets.Repositories;
+using eTickets.Repositories.ProducerRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 builder.Services.AddScoped<IActorRepository, ActorRepository>();
+builder.Services.AddScoped<IProducerService, ProducerService>();
 
 var app = builder.Build();
 
