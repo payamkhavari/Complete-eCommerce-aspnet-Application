@@ -1,0 +1,33 @@
+﻿@model Actor
+
+@{
+    ViewData["Title"] = "The Details of Actors";
+}
+
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ProfilePictureUrl)</th>
+                    <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Bio)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="align-middle">
+                        <img class="rounded-circle" src="@Model.ProfilePictureUrl" alt="@Model.FullName" style="max-width : 150px" />
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => Model.FullName)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => Model.Bio)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

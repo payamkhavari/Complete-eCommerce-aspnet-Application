@@ -11,9 +11,10 @@ namespace eTickets.Data
         }
 
         public DbSet<Actor> Actors { get; set; }
-        protected DbSet<Producer> Producers { get; set; }
-        protected DbSet<Cinema> Cinemas { get; set; }
-        protected DbSet<Actor_Movie> Actor_Movies { get; set; }
+        public DbSet<Producer> Producers { get; set; }
+        public DbSet<Cinema> Cinemas { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Actor_Movie> Actor_Movies { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Actor_Movie>()

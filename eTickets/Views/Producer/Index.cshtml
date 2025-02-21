@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Producer>
+
+
+@{
+    ViewData["Title"] = "ProducerPage";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @Html.Raw(TempData["SuccessMessage"])
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>@Html.DisplayNameFor(model => model.ProfilePictureUrl)</th>
+                    <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Bio)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img class="rounded-circle" src="@item.ProfilePictureUrl" alt="@item.FullName" style="max-width : 150px" />
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Bio)
+                        </td>
+                        <td class="align-middle">
+                            <a asp-action="Edit" asp-controller="Producer" asp-route-id="@item.ProducerId" class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Edit</a>
+                            <a asp-action="Details" asp-controller="Producer" asp-route-id="@item.ProducerId" class="btn btn-outline-info"><i class="bg-info bi-eye"></i>Detalis</a>
+                            <a asp-action="Delete" asp-controller="Producer" asp-route-id="@item.ProducerId" class="btn btn-danger"><i class="bg-info bi-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
