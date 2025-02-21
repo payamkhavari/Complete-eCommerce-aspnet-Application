@@ -11,10 +11,13 @@
     <None Remove="Controllers\ActorsController.cs~RF2d2ba20.TMP" />
     <None Remove="Controllers\ActorsController.cs~RF7b1a2be.TMP" />
     <None Remove="Models\Actor.cs~RF76d01f5.TMP" />
+    <None Remove="Models\Cinema.cs~RFa0bd2c7.TMP" />
     <None Remove="Models\Movie.cs~RF96719a1d.TMP" />
     <None Remove="Models\Movie.cs~RF96cf02b6.TMP" />
+    <None Remove="Models\Producer.cs~RFa03126c.TMP" />
     <None Remove="Repositories\IActorRepository.cs~RF2cf3399.TMP" />
     <None Remove="Repositories\IActorRepository.cs~RF79ccc74.TMP" />
+    <None Remove="Repositories\IActorRepository.cs~RF7fd1717.TMP" />
   </ItemGroup>
 
   <ItemGroup>

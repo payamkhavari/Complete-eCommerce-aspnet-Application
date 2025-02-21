@@ -30,7 +30,7 @@ namespace eTickets.Controllers
 
             _dbContex.Cinemas.AddRange(cinemas);
             _dbContex.SaveChanges();
-            return View();
+            return View(cinemas);
         }
     }
 }
