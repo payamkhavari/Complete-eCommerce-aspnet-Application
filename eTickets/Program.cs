@@ -1,4 +1,5 @@
 using eTickets.Data;
+using eTickets.Data.Services;
 using eTickets.Repositories;
 using eTickets.Repositories.ProducerRepository;
 using Microsoft.EntityFrameworkCore;
@@ -13,8 +14,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
 
-builder.Services.AddScoped<IActorRepository, ActorRepository>();
+builder.Services.AddScoped<IActorService, ActorService>();
 builder.Services.AddScoped<IProducerService, ProducerService>();
+builder.Services.AddScoped<IMovieService, MovieService>();
 
 var app = builder.Build();
 

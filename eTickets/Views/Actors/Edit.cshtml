@@ -29,13 +29,6 @@
         <input asp-for="Bio" class="form-control" />
         <span asp-validation-for="Bio" class="text-danger"></span>
     </div>
-
-    <div class="mb-3">
-        <label asp-for="Actor_Movies" class="form-label">بت</label>
-        <input asp-for="Actor_Movies" class="form-control" />
-        <span asp-validation-for="Actor_Movies" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
-    <a asp-action="Index" class="btn btn-secondary">لغو</a>
+    <button type="submit" class="btn btn-primary" asp-action="Edit" asp-controller="Actors">ذخیره تغییرات</button>
+    <a asp-action="Index" asp-controller="Actors" class="btn btn-secondary">لغو</a>
 </form>

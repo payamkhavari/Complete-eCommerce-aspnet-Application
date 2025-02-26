@@ -1,0 +1,50 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "The Details of Movies";
+}
+
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ImageUrl)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Cinema)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.Price)</th>
+                    <th>@Html.DisplayNameFor(model => model.Producer)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="align-middle">
+                        <img class="rounded-circle" src="@Model.ImageUrl" alt="@Model.Name" style="max-width : 150px" />
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => Model.Name)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => Model.Cinema)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => Model.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => Model.Price)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => Model.Producer)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-controller="Movie" asp-route-id="@Model.MovieId" class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Edit</a>
+    <a asp-action="Index" asp-controller="Movie"  class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Show all</a>
+</div>
