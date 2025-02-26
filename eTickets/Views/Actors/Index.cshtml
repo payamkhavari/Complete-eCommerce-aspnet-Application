@@ -45,5 +45,14 @@
                 }
             </tbody>
         </table>
+@*        @if (TempData["Message"] != null && )
+        {
+            <div class="alert alert-success">
+                @Html.Raw(TempData["Message"])
+            </div>
+        }*@
     </div>
+</div>
+<div style="position:fixed; right:25px; bottom:25px; " class="test-white">
+    <a asp-action="Add" asp-controller="Actors" class="btn btn-success"><i class="bi bi-plus-circle"></i>Add new</a>
 </div>
