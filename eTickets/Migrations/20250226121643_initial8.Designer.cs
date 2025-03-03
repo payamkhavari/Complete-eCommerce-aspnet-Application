@@ -12,8 +12,8 @@ using eTickets.Data;
 namespace eTickets.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250221080206_initial2")]
-    partial class initial2
+    [Migration("20250226121643_initial8")]
+    partial class initial8
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,22 +27,25 @@ namespace eTickets.Migrations
 
             modelBuilder.Entity("eTickets.Models.Actor", b =>
                 {
-                    b.Property<int>("ActorId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ActorId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Bio")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfilePictureUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ActorId");
+                    b.HasKey("Id");
 
                     b.ToTable("Actors");
                 });
@@ -86,11 +89,11 @@ namespace eTickets.Migrations
 
             modelBuilder.Entity("eTickets.Models.Movie", b =>
                 {
-                    b.Property<int>("MovieId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MovieId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CinemaId")
                         .HasColumnType("int");
@@ -100,6 +103,9 @@ namespace eTickets.Migrations
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MovieCategory")
                         .HasColumnType("int");
@@ -116,7 +122,7 @@ namespace eTickets.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("MovieId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CinemaId");
 
@@ -127,11 +133,11 @@ namespace eTickets.Migrations
 
             modelBuilder.Entity("eTickets.Models.Producer", b =>
                 {
-                    b.Property<int>("ProducerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProducerId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Bio")
                         .HasColumnType("nvarchar(max)");
@@ -142,20 +148,20 @@ namespace eTickets.Migrations
                     b.Property<string>("ProfilePictureUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProducerId");
+                    b.HasKey("Id");
 
                     b.ToTable("Producers");
                 });
 
             modelBuilder.Entity("eTickets.Models.Actor_Movie", b =>
                 {
-                    b.HasOne("eTickets.Models.Actor", "Actor")
+                    b.HasOne("eTickets.Models.Movie", "Movie")
                         .WithMany("Actor_Movies")
                         .HasForeignKey("ActorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eTickets.Models.Movie", "Movie")
+                    b.HasOne("eTickets.Models.Actor", "Actor")
                         .WithMany("Actor_Movies")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)

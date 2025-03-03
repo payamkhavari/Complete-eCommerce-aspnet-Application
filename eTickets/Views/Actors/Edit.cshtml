@@ -10,7 +10,7 @@
 }
 
 <form asp-action="Edit" asp-controller="Actors" method="post">
-    <input type="hidden" asp-for="ActorId" />
+    <input type="hidden" asp-for="Id" />
 
     <div class="mb-3">
         <label asp-for="ProfilePictureUrl" class="form-label">عکس</label>
@@ -28,6 +28,11 @@
         <label asp-for="Bio" class="form-label">بیوگرافی</label>
         <input asp-for="Bio" class="form-control" />
         <span asp-validation-for="Bio" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Actor_Movies" class="form-label">فیلم ها</label>
+        <input asp-for="Actor_Movies" class="form-control" />
+        <span asp-validation-for="Actor_Movies" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary" asp-action="Edit" asp-controller="Actors">ذخیره تغییرات</button>
     <a asp-action="Index" asp-controller="Actors" class="btn btn-secondary">لغو</a>

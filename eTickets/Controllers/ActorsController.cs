@@ -14,27 +14,27 @@ namespace eTickets.Controllers
         public IActionResult Index()
         {
             //_repository.AddActorsIntoDatabase();
-            var result = _service.GetAllActors();
+            var result = _service.GetAll();
             return View(result);
         } 
         public IActionResult DeleteActor(int id)
         {
             
-            var actor = _service.GetActorById(id);
-            _service.DeleteActor(id);
+            var actor = _service.GetById(id);
+            _service.Delete(id);
             TempData["SuccessMessage"] = $"<strong>{actor.FullName}</strong> با موفقیت حذف شد.";
             return RedirectToAction("Index");
         }
 
         public IActionResult Details(int id)
         {
-            var actor = _service.GetActorById(id);
+            var actor = _service.GetById(id);
             return View(actor);
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var actor = _service.GetActorById(id);
+            var actor = _service.GetById(id);
 
             if(actor == null)
             {
@@ -51,7 +51,7 @@ namespace eTickets.Controllers
                 return View(model);
             }
 
-            var actor = _service.GetActorById(id);
+            var actor = _service.GetById(id);
 
             if (actor == null)
             {
@@ -61,8 +61,9 @@ namespace eTickets.Controllers
             actor.ProfilePictureUrl = model.ProfilePictureUrl;
             actor.FullName = model.FullName;
             actor.Bio = model.Bio;
+            actor.Actor_Movies = model.Actor_Movies;
 
-            _service.UpdateActor(actor);
+            _service.Update(actor);
 
             TempData["SuccessMessage"] = "بازیگر با موفقیت ویرایش شد.";
 
@@ -82,7 +83,7 @@ namespace eTickets.Controllers
             }
             else
             {
-                _service.AddActor(actor);
+                _service.Add(actor);
                 TempData["SuccessMessage"] = "بازیگر با موفقیت اضافه شد.";
                 return RedirectToAction(nameof(Index));
             }

@@ -1,57 +1,41 @@
-﻿using eTickets.Models;
+﻿using eTickets.Data.Base;
+using eTickets.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Immutable;
 
 namespace eTickets.Data.Services
 {
-    public class MovieService : IMovieService
+    public class MovieService : EntityBaseRepository<Movie> ,IMovieService
     {
-        private readonly AppDbContext _dbContext;
-
-        public MovieService(AppDbContext dbContext)
+        private readonly AppDbContext _context;
+        public MovieService(AppDbContext context) : base(context)
         {
-            _dbContext = dbContext;
-        }
-        public Movie GetMovie(int id)
-        {
-            var movie = _dbContext.Movies.FirstOrDefault(x => x.MovieId == id);
-
-            if (movie == null)
-            {
-                throw new Exception("Movie not found");
-            }
-            else
-            {
-                return movie;
-            }
+            _context = context;
         }
 
-        public List<Movie> GetMovies()
+        public Movie UpdateMovie( Movie movie)
         {
-            return _dbContext.Movies.Include(x => x.Cinema).ToList();
-        }
 
-        public Movie Update(Movie movie)
-        {
-            var result = GetMovie(movie.MovieId);
+            var result = _context.Movies.FirstOrDefault(x => x.Id == movie.Id);
 
-            if (movie == null)
-            {
-                throw new Exception("Movie not found");
-            }
-            else
-            {
-                result.Name = movie.Name;
-                result.Description = movie.Description;
-                result.MovieCategory = movie.MovieCategory;
-                result.Producer = movie.Producer;
-                result.Price = movie.Price;
-                //result.Cinema.Name = movie.Cinema.Name;
-                result.ImageUrl = movie.ImageUrl;
-            }
-            _dbContext.Movies.Update(result);
-            _dbContext.SaveChanges();
-            return result;
+                if (movie == null)
+                {
+                    throw new Exception("Movie not found");
+                }
+                else
+                {
+                    result.Name = movie.Name;
+                    result.Description = movie.Description;
+                    result.MovieCategory = movie.MovieCategory;
+                    result.Producer = movie.Producer;
+                    result.Price = movie.Price;
+                    //result.Cinema.Name = movie.Cinema.Name;
+                    result.ImageUrl = movie.ImageUrl;
+                }
+                _context.Movies.Update(result);
+                _context.SaveChanges();
+                return result;
+            
         }
     }
 }

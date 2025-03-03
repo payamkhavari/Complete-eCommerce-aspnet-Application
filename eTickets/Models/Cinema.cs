@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using eTickets.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace eTickets.Models
 {
-    public class Cinema
+    public class Cinema:IEntityBase
     {
         [Key]
-        public int CinemaId { get; set; }
+        public int Id { get; set; }
         [Display(Name ="Cinema Logo")]
         public string? CinemaLogo { get; set; }
         [Display(Name = "Name")]
@@ -13,7 +14,7 @@ namespace eTickets.Models
         [Display(Name = "Description")]
         public string? Description { get; set; }
 
-        public List<Movie> Movies { get; set; }
+        public virtual List<Movie>? Movies { get; set; }
 
     }
 }

@@ -10,16 +10,20 @@
     <None Remove="Controllers\3neqne20.f5y~" />
     <None Remove="Controllers\ActorsController.cs~RF2d2ba20.TMP" />
     <None Remove="Controllers\ActorsController.cs~RF7b1a2be.TMP" />
+    <None Remove="Controllers\CinemaController.cs~RF19cb1e9e.TMP" />
+    <None Remove="Controllers\ProducerController.cs~RF982259.TMP" />
+    <None Remove="Data\Base\EntityBaseRepository.cs~RF23a26c74.TMP" />
+    <None Remove="Data\Base\IEntityBaseRepository.cs~RF5593a27.TMP" />
+    <None Remove="Data\Services\ActorService.cs~RF23c1c154.TMP" />
     <None Remove="Data\Services\hv02q1jf.vzp~" />
     <None Remove="Data\Services\IMovieService.cs~RF1c126cf9.TMP" />
+    <None Remove="Data\Services\IProducerService.cs~RF95c3b8.TMP" />
+    <None Remove="Data\Services\MovieService.cs~RF2409e77b.TMP" />
     <None Remove="Models\Actor.cs~RF76d01f5.TMP" />
     <None Remove="Models\Cinema.cs~RFa0bd2c7.TMP" />
     <None Remove="Models\Movie.cs~RF96719a1d.TMP" />
     <None Remove="Models\Movie.cs~RF96cf02b6.TMP" />
     <None Remove="Models\Producer.cs~RFa03126c.TMP" />
-    <None Remove="Repositories\IActorRepository.cs~RF2cf3399.TMP" />
-    <None Remove="Repositories\IActorRepository.cs~RF79ccc74.TMP" />
-    <None Remove="Repositories\IActorRepository.cs~RF7fd1717.TMP" />
     <None Remove="Views\Actors\Add.cshtml~RFb428923.TMP" />
   </ItemGroup>
 
