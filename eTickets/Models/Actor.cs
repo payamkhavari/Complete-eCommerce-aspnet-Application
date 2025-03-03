@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using eTickets.Data.Base;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 
 namespace eTickets.Models
 {
-    public class Actor
+    public class Actor : IEntityBase
     {
         [Key]
-        public int ActorId { get; set; }
+        public int Id { get; set; }
+        //public int ActorId { get; set; }
         [Display(Name = "Profile Picture")]
         [Required(ErrorMessage ="profile picture is required")]
         public string ProfilePictureUrl { get; set; }
@@ -16,6 +18,7 @@ namespace eTickets.Models
         [Display(Name ="Biography")]
         [Required(ErrorMessage = "Biography is required")]
         public string Bio { get; set; }
-        public List<Actor_Movie>? Actor_Movies { get; set; }
+        public virtual List<Actor_Movie> Actor_Movies { get; set; }
+        
     }
 }

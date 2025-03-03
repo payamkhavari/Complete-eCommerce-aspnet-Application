@@ -1,0 +1,39 @@
+﻿@model Cinema
+
+@{
+    ViewData["Title"] = "The Details of Cinemas";
+}
+
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.CinemaLogo)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="align-middle">
+                        <img class="rounded-circle" src="@Html.DisplayFor(modelItem => Model.Name)" alt="@Html.DisplayFor(modelItem => Model.Name)" style="max-width : 150px" />
+                        @Html.DisplayFor(modelItem => Model.Name)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => Model.CinemaLogo)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => Model.Description)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-controller="Cinema" asp-route-id="@Model.Id" class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Edit</a>
+    <a asp-action="Index" asp-controller="Cinema"  class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Show all</a>
+</div>

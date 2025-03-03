@@ -1,4 +1,5 @@
 ﻿using eTickets.Data;
+using eTickets.Data.Services;
 using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,31 +7,21 @@ namespace eTickets.Controllers
 {
     public class CinemaController : Controller
     {
-        private readonly AppDbContext _dbContex;
-        public CinemaController(AppDbContext dbContext)
+        private readonly ICinemaService _service;
+        public CinemaController(ICinemaService service)
         {
-            _dbContex = dbContext;
+            _service = service;
         }
         public IActionResult Index()
         {
-            List<Cinema> cinemas = new List<Cinema>(){
-                new Cinema()
-                {
-                    Description = "ghjk",
-                    CinemaLogo = "this part was not defined",
-                    Name = "koroush"
-                },
-            new Cinema()
-            {
-                Description = "ghjk",
-                CinemaLogo = "this part was not defined",
-                Name = "koroush"
-            }
-            };
+            var movies = _service.GetAll();
+            return View(movies);
+        }
 
-            _dbContex.Cinemas.AddRange(cinemas);
-            _dbContex.SaveChanges();
-            return View(cinemas);
+        public IActionResult Details(int id)
+        {
+           var cinema =  _service.GetById(id);
+            return View(cinema);
         }
     }
 }

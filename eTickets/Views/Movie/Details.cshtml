@@ -6,7 +6,7 @@
 
 
 <div class="row">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-8 offset-2">
         <table class="table">
             <thead>
                 <tr>
@@ -16,6 +16,7 @@
                     <th>@Html.DisplayNameFor(model => model.Description)</th>
                     <th>@Html.DisplayNameFor(model => model.Price)</th>
                     <th>@Html.DisplayNameFor(model => model.Producer)</th>
+                    <th>@Html.DisplayNameFor(model => model.Actor_Movies)</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +28,8 @@
                         @Html.DisplayFor(modelItem => Model.Name)
                     </td>
                     <td class="align-middle">
-                        @Html.DisplayFor(modelItem => Model.Cinema)
+                        <b>Cinema:</b>
+                        <a asp-action="Details" asp-controller="Cinema" asp-route-id ="@Model.Id">@Model.Cinema.Id</a>
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => Model.Description)
@@ -38,6 +40,16 @@
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => Model.Producer)
                     </td>
+                    <td class="align-middle">
+                            @foreach (var item in Model.Actor_Movies)
+                            {
+                                
+                                    <a asp-controller="Actors" asp-action="Details" asp-route-id="@item.Actor.Id">
+                                    Detail Of Actor 
+                                    </a>
+                               
+                            }
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -45,6 +57,6 @@
 </div>
 
 <div>
-    <a asp-action="Edit" asp-controller="Movie" asp-route-id="@Model.MovieId" class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Edit</a>
-    <a asp-action="Index" asp-controller="Movie"  class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Show all</a>
+    <a asp-action="Edit" asp-controller="Movie" asp-route-id="@Model.Id" class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Edit</a>
+    <a asp-action="Index" asp-controller="Movie"  class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Back To List</a>
 </div>

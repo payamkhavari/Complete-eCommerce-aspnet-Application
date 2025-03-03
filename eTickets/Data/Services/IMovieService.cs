@@ -1,11 +1,10 @@
-﻿using eTickets.Models;
+﻿using eTickets.Data.Base;
+using eTickets.Models;
 
 namespace eTickets.Data.Services
 {
-    public interface IMovieService
+    public interface IMovieService : IEntityBaseRepository<Movie>
     {
-        Movie GetMovie(int id);
-        List<Movie> GetMovies();
-        Movie Update(Movie movie);
+        Movie UpdateMovie(Movie movie);
     }
 }
