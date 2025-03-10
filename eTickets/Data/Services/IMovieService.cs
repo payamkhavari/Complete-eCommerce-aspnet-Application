@@ -1,10 +1,16 @@
 ﻿using eTickets.Data.Base;
+using eTickets.Data.ViewModels;
 using eTickets.Models;
 
 namespace eTickets.Data.Services
 {
     public interface IMovieService : IEntityBaseRepository<Movie>
     {
-        Movie UpdateMovie(Movie movie);
+        void UpdateMovie(MovieViewModel movie);
+        DropDownMovieViewModel GetNewMovieDropdownValues();
+
+        void AddMovie(MovieViewModel movie);
+
+       
     }
 }

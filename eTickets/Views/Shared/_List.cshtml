@@ -2,7 +2,7 @@
 
 
 @{
-    ViewData["Title"] = "ActorPage";
+    ViewData["Title"] = "@ModelPage";
 }
 
 @if (TempData["SuccessMessage"] != null)
@@ -28,7 +28,7 @@
                 {
                     <tr>
                         <td class="align-middle">
-                            <img class="rounded-circle" src="@item.ProfilePictureUrl" alt="@item.FullName" style="max-width : 150px"/>
+                            <img class="rounded-circle" src="@item.ProfilePictureUrl" alt="@item.FullName" style="max-width : 150px" />
                         </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.FullName)
@@ -45,12 +45,5 @@
                 }
             </tbody>
         </table>
-@*        @if (TempData["Message"] != null && )
-        {
-            <div class="alert alert-success">
-                @Html.Raw(TempData["Message"])
-            </div>
-        }*@
     </div>
 </div>
-@await Html.PartialAsync("_CreateItem","Actor")

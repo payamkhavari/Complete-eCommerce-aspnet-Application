@@ -1,6 +1,7 @@
 ﻿using eTickets.Data;
 using eTickets.Data.Enums;
 using eTickets.Data.Services;
+using eTickets.Data.ViewModels;
 using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -34,20 +35,40 @@ namespace eTickets.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var result = _service.GetById(id, C => C.Cinema);
+            var result = _service.GetById(id);
             if (result == null)
             {
                 return NotFound();
             }
             else
             {
-                return View(result);
+                var newMovie = new MovieViewModel()
+                {
+                    Id = result.Id, 
+                    Name = result.Name,
+                    CinemaId = result.CinemaId,
+                    ProducerId = result.ProducerId,
+                    Description = result.Description,
+                    ImageUrl = result.ImageUrl,
+                    Price = result.Price,
+                    EndDate = result.EndDate,
+                    StartDate = result.StartDate,
+                    MovieCategory= result.MovieCategory,
+                    ActorIds = result.Actor_Movies != null ? result.Actor_Movies.Select(n => n.ActorId).ToList() : new List<int>(),
+                };
+                var response = _service.GetNewMovieDropdownValues();
+                ViewBag.Actors = new SelectList(response.Actors, "Id", "FullName");
+                ViewBag.Producers = new SelectList(response.Producers, "Id", "FullName");
+                ViewBag.Cinemas = new SelectList(response.Cinemas, "Id", "Name");
+               
+                return View(newMovie);
+                
             }
         }
 
 
         [HttpPost]
-        public IActionResult Edit(int id, Movie movie)
+        public IActionResult Edit(int id, MovieViewModel movie)
         {
              _service.UpdateMovie(movie);
             return RedirectToAction("Index");
@@ -68,6 +89,21 @@ namespace eTickets.Controllers
             
             _service.Add(movie);
             return View(movie);
+        }
+        [HttpGet]
+        public IActionResult Add()
+        {
+           var response = _service.GetNewMovieDropdownValues();
+            ViewBag.Actors = new SelectList(response.Actors, "Id", "FullName");
+            ViewBag.Producers = new SelectList(response.Producers,"Id" , "FullName");
+            ViewBag.Cinemas = new SelectList(response.Cinemas, "Id", "Name");
+            ViewBag.MovieCategories = new SelectList(Enum.GetValues(typeof(MovieCategory)));
+            return View();
+        }
+        public IActionResult Add(MovieViewModel movie)
+        {
+            _service.AddMovie(movie);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

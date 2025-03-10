@@ -19,6 +19,7 @@
     <None Remove="Data\Services\IMovieService.cs~RF1c126cf9.TMP" />
     <None Remove="Data\Services\IProducerService.cs~RF95c3b8.TMP" />
     <None Remove="Data\Services\MovieService.cs~RF2409e77b.TMP" />
+    <None Remove="Data\ViewModels\DropDownMovieViewModel.cs~RF1f219cf2.TMP" />
     <None Remove="Models\Actor.cs~RF76d01f5.TMP" />
     <None Remove="Models\Cinema.cs~RFa0bd2c7.TMP" />
     <None Remove="Models\Movie.cs~RF96719a1d.TMP" />
@@ -34,6 +35,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.12" />
   </ItemGroup>
 
 </Project>

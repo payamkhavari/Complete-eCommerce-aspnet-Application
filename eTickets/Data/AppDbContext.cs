@@ -23,13 +23,14 @@ namespace eTickets.Data
             modelBuilder.Entity<Actor_Movie>()
                 .HasOne(am => am.Movie)
                 .WithMany(am => am.Actor_Movies)
-                .HasForeignKey(am => am.ActorId);
+                .HasForeignKey(am => am.MovieId)
+                .OnDelete(DeleteBehavior.Cascade); 
 
             modelBuilder.Entity<Actor_Movie>()
                 .HasOne(am => am.Actor)
                 .WithMany(am => am.Actor_Movies)
-                .HasForeignKey(am => am.MovieId);
-
+                .HasForeignKey(am => am.ActorId)
+                .OnDelete(DeleteBehavior.Cascade); 
 
             base.OnModelCreating(modelBuilder);
         }
