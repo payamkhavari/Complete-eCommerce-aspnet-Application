@@ -6,6 +6,7 @@ using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace eTickets.Controllers
 {
@@ -24,6 +25,19 @@ namespace eTickets.Controllers
         {
             var movies = _service.GetAll(c => c.Cinema , p => p.Producer);
             return View(movies);
+        }
+        // the parameters of filter for search should be  the same of name of input which is in form in _layout view.
+        public IActionResult Filter(string searchString)
+        {
+            var allMovies = _service.GetAll();
+
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                var result = allMovies.Where(n =>n.Name.Contains(searchString,StringComparison.OrdinalIgnoreCase) ||  n.Description.Contains(searchString,StringComparison.OrdinalIgnoreCase)).ToList();
+                return View("Index", result);
+            }
+
+            return View("Index",allMovies);
         }
         public IActionResult Details(int id)
         {

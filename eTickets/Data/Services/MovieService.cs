@@ -67,7 +67,7 @@ namespace eTickets.Data.Services
 
             var result = _context.Movies.FirstOrDefault(x => x.Id == movie.Id);
 
-            if (movie == null)
+            if (result == null)
             {
                 throw new Exception("Movie not found");
             }
