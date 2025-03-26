@@ -52,9 +52,11 @@
         </table>
         <div class="text-center">
             <div class="btn-group">
-                <a class="btn btn-outline-primary" asp-controller="Order" asp-action="CompleteOrder">
+ @*               <a class="btn btn-outline-primary" asp-controller="Order" asp-action="CompleteOrder">
                     Complete Order
-                </a>
+                </a>*@
+                <div id="paypal-btn"></div>
+                <span style="padding:5px"></span>
                 <a class="btn btn-outline-success" asp-controller="Movie" asp-action="Index">
                     Add More Items
                 </a>
@@ -63,3 +65,45 @@
     </div>
 
 </div>
+@section Scripts{
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+    <script>
+
+        let _total = @Html.Raw(Model.ShoppingCartTotal);
+        paypal.Button.render({
+            //configure environment
+            env:'sandbox' ,
+            client:{
+                sandbox:'AcKRtgL4i68EZ2ZYuYUx3ilihAg2YhL5dtF_m19A8MjBWVOn6ewNS4M_uV8gA3xi98zTcUq38gUHbVFx'
+            },
+            //customize button
+            locale:'en_US' ,
+            style:{
+                size: 'small',
+                color:'gold',
+                shape:'pill'
+            },
+            commit:true,
+            //set up a peyment
+            payment:function(data,actions){
+                return actions.payment.create({
+                    transactions:[{
+                        amount:{
+                            total: _total,
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+
+            onAuthorize:function(data,actions){
+                return actions.payment.execute().then(function(){
+                    var url = '@Url.Action("OrderCompleted","Order",new {})';
+                    window.location.href = url;
+                });
+            }
+            //execute payment
+        }, '#paypal-btn');
+    </script>
+}
