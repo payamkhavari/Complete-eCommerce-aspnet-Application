@@ -19,6 +19,7 @@
     <None Remove="Data\Services\IMovieService.cs~RF1c126cf9.TMP" />
     <None Remove="Data\Services\IProducerService.cs~RF95c3b8.TMP" />
     <None Remove="Data\Services\MovieService.cs~RF2409e77b.TMP" />
+    <None Remove="Data\ShoppingCart.cs~RF4294d461.TMP" />
     <None Remove="Data\ViewModels\DropDownMovieViewModel.cs~RF1f219cf2.TMP" />
     <None Remove="Models\Actor.cs~RF76d01f5.TMP" />
     <None Remove="Models\Cinema.cs~RFa0bd2c7.TMP" />
@@ -26,6 +27,7 @@
     <None Remove="Models\Movie.cs~RF96cf02b6.TMP" />
     <None Remove="Models\Producer.cs~RFa03126c.TMP" />
     <None Remove="Views\Actors\Add.cshtml~RFb428923.TMP" />
+    <None Remove="Views\Order\OrderComplete.cshtml~RF2cbefe8.TMP" />
   </ItemGroup>
 
   <ItemGroup>
