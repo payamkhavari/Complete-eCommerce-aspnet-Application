@@ -34,6 +34,9 @@
 </div>
 
 <div>
-    <a asp-action="Edit" asp-controller="Cinema" asp-route-id="@Model.Id" class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Edit</a>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-controller="Cinema" asp-route-id="@Model.Id" class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Edit</a>
+    }
     <a asp-action="Index" asp-controller="Cinema"  class="btn btn-outline-primary"><i class="bg-info bi-pencil-square"></i>Show all</a>
 </div>
