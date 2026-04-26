@@ -29,11 +29,22 @@ namespace eTickets.Controllers
         // the parameters of filter for search should be  the same of name of input which is in form in _layout view.
         public IActionResult Filter(string searchString)
         {
-            var allMovies = _service.GetAll();
+            var allMovies = _service.GetAll(c => c.Cinema, p => p.Producer);
+
+            var result = new List<Movie>();
 
             if(!string.IsNullOrEmpty(searchString))
             {
-                var result = allMovies.Where(n =>n.Name.Contains(searchString,StringComparison.OrdinalIgnoreCase) ||  n.Description.Contains(searchString,StringComparison.OrdinalIgnoreCase)).ToList();
+                foreach (var item in allMovies)
+                {
+                    if(item.Name != null)
+                    {
+                        result = allMovies.Where(x => x.Name.Contains(searchString)).ToList();
+                        
+                    }
+                    
+                }
+                //var result = allMovies.Where(n =>n.Name.Contains(searchString,StringComparison.OrdinalIgnoreCase) ||  n.Description.Contains(searchString,StringComparison.OrdinalIgnoreCase)).ToList();
                 return View("Index", result);
             }
 
