@@ -11,6 +11,7 @@ namespace eTickets.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            //hi
         }
 
         public IActionResult Index()
